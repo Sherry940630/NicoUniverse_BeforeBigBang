@@ -44,6 +44,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact(unfinished)"",
+                    ""type"": ""Button"",
+                    ""id"": ""bed63b7c-79f7-4af2-a2b3-537c7a80c5ac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -167,6 +176,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Jump(unfinished)"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""55ef1966-df37-4a16-b063-99e8e4acec83"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact(unfinished)"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -177,6 +197,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jumpunfinished = m_Player.FindAction("Jump(unfinished)", throwIfNotFound: true);
+        m_Player_Interactunfinished = m_Player.FindAction("Interact(unfinished)", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -240,12 +261,14 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jumpunfinished;
+    private readonly InputAction m_Player_Interactunfinished;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jumpunfinished => m_Wrapper.m_Player_Jumpunfinished;
+        public InputAction @Interactunfinished => m_Wrapper.m_Player_Interactunfinished;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -261,6 +284,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jumpunfinished.started += instance.OnJumpunfinished;
             @Jumpunfinished.performed += instance.OnJumpunfinished;
             @Jumpunfinished.canceled += instance.OnJumpunfinished;
+            @Interactunfinished.started += instance.OnInteractunfinished;
+            @Interactunfinished.performed += instance.OnInteractunfinished;
+            @Interactunfinished.canceled += instance.OnInteractunfinished;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -271,6 +297,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jumpunfinished.started -= instance.OnJumpunfinished;
             @Jumpunfinished.performed -= instance.OnJumpunfinished;
             @Jumpunfinished.canceled -= instance.OnJumpunfinished;
+            @Interactunfinished.started -= instance.OnInteractunfinished;
+            @Interactunfinished.performed -= instance.OnInteractunfinished;
+            @Interactunfinished.canceled -= instance.OnInteractunfinished;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -292,5 +321,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJumpunfinished(InputAction.CallbackContext context);
+        void OnInteractunfinished(InputAction.CallbackContext context);
     }
 }
