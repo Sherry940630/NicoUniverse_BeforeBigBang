@@ -37,6 +37,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""SpeedUp"",
+                    ""type"": ""Value"",
+                    ""id"": ""09d0db73-1a40-4bba-a87f-f32eb96bcb52"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Jump(unfinished)"",
                     ""type"": ""Button"",
                     ""id"": ""ba58afce-4a5b-4b9c-9452-c9954d99bbf4"",
@@ -187,6 +196,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Interact(unfinished)"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""22a037b2-1ca9-4eea-b754-24ec6ae8f5e9"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpeedUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -196,6 +216,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_SpeedUp = m_Player.FindAction("SpeedUp", throwIfNotFound: true);
         m_Player_Jumpunfinished = m_Player.FindAction("Jump(unfinished)", throwIfNotFound: true);
         m_Player_Interactunfinished = m_Player.FindAction("Interact(unfinished)", throwIfNotFound: true);
     }
@@ -260,6 +281,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_SpeedUp;
     private readonly InputAction m_Player_Jumpunfinished;
     private readonly InputAction m_Player_Interactunfinished;
     public struct PlayerActions
@@ -267,6 +289,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @SpeedUp => m_Wrapper.m_Player_SpeedUp;
         public InputAction @Jumpunfinished => m_Wrapper.m_Player_Jumpunfinished;
         public InputAction @Interactunfinished => m_Wrapper.m_Player_Interactunfinished;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -281,6 +304,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @SpeedUp.started += instance.OnSpeedUp;
+            @SpeedUp.performed += instance.OnSpeedUp;
+            @SpeedUp.canceled += instance.OnSpeedUp;
             @Jumpunfinished.started += instance.OnJumpunfinished;
             @Jumpunfinished.performed += instance.OnJumpunfinished;
             @Jumpunfinished.canceled += instance.OnJumpunfinished;
@@ -294,6 +320,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @SpeedUp.started -= instance.OnSpeedUp;
+            @SpeedUp.performed -= instance.OnSpeedUp;
+            @SpeedUp.canceled -= instance.OnSpeedUp;
             @Jumpunfinished.started -= instance.OnJumpunfinished;
             @Jumpunfinished.performed -= instance.OnJumpunfinished;
             @Jumpunfinished.canceled -= instance.OnJumpunfinished;
@@ -320,6 +349,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnSpeedUp(InputAction.CallbackContext context);
         void OnJumpunfinished(InputAction.CallbackContext context);
         void OnInteractunfinished(InputAction.CallbackContext context);
     }

@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "SpeedUp",
+                    "type": "Value",
+                    "id": "09d0db73-1a40-4bba-a87f-f32eb96bcb52",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Jump(unfinished)",
                     "type": "Button",
                     "id": "ba58afce-4a5b-4b9c-9452-c9954d99bbf4",
@@ -163,6 +172,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact(unfinished)",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "22a037b2-1ca9-4eea-b754-24ec6ae8f5e9",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpeedUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

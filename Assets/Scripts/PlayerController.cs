@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleMovement();
+        //HandleInteraction();
     }
 
     private void HandleMovement()
@@ -75,4 +76,11 @@ public class PlayerController : MonoBehaviour
     {
         return isWalking;
     }
+
+    /*
+    private void HandleInteraction()
+    {
+        transform.position = GetChairTopPoint();
+    }
+    */
 }
