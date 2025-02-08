@@ -1,53 +1,35 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStatsManager : MonoBehaviour
 {
-    [SerializeField] private GameObject statBarPrefab;
+    [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private List<PlayerStatsUI> statBars; // Assigned in Inspector
 
-    private Dictionary<string, PlayerStatsUI> statBars = new Dictionary<string, PlayerStatsUI>();
-
-    public void Initialize(PlayerStats playerStats)
+    private void Start()
     {
-        playerStats.OnStatChanged += PlayerStats_OnStatChanged;
+        playerStats.OnStatChanged += UpdateStatBar;
+        InitializeStatBars();
     }
 
-    private void PlayerStats_OnStatChanged(object sender, PlayerStats.StatChangedEventArgs e)
+    private void InitializeStatBars()
     {
-        Debug.Log("OnStatChanged FIRED!!!!!!!!!!!!!!!!!!!!!!!");
-        UpdateStat(e.statName, e.currentValue, e.maxValue);
-    }
-
-
-    public void CreateStatBar(string statName, float initialValue, float maxValue)
-    {
-        GameObject newStatBar = Instantiate(statBarPrefab, transform);
-        //Debug.Log($"Instantiated stat bar for {statName}");
-
-        PlayerStatsUI statBarComponent = newStatBar.GetComponent<PlayerStatsUI>();
-
-        if (statBarComponent == null)
+        foreach (var statBar in statBars)
         {
-            Debug.LogError("PlayerStatsUI component missing on statBarPrefab!");
-            return;
+            string statName = statBar.name.Replace("Bar", "").Trim(); // Ensure proper names
+            statBar.Initialize(statName);
         }
-
-        statBarComponent.SetStat(statName, initialValue, maxValue);
-
-        statBars[statName] = statBarComponent;
     }
 
-    public void UpdateStat(string statName, float currentValue, float maxValue)
+    private void UpdateStatBar(string statName, float currentValue, float maxValue)
     {
-        if (statBars.TryGetValue(statName, out PlayerStatsUI statBar))
+        foreach (var statBar in statBars)
         {
-            Debug.Log($"Updating {statName}: Current = {currentValue}, Max = {maxValue}");
-            statBar.SetStat(statName, currentValue, maxValue);
-        }
-        else
-        {
-            Debug.LogWarning($"Stat bar for {statName} not found!");
+            if (statBar.name.StartsWith(statName))
+            {
+                statBar.UpdateStat(currentValue, maxValue);
+                break;
+            }
         }
     }
 }

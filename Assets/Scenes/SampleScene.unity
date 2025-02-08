@@ -237,6 +237,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1942781601}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &212897510 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1898754126108408836, guid: 4ca38319aa9a8f04f876af09c51ae1e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1942781601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6d2122766b99947b2ea328ff6694c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &283595972
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,6 +764,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7014816010042114568}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &621950786 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1898754126108408836, guid: 4ca38319aa9a8f04f876af09c51ae1e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7014816010042114568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6d2122766b99947b2ea328ff6694c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &665168457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,15 +1245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4722a0ac2b090764499eeb38ace75205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statBarManager: {fileID: 1245372303}
-  hunger: 0
-  thirst: 0
-  boredom: 0
-  stat: 50
-  maxHunger: 50
-  maxThirst: 50
-  maxBoredom: 50
-  maxStat: 100
 --- !u!4 &1245372302
 Transform:
   m_ObjectHideFlags: 0
@@ -1257,8 +1272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5bc3ef182a73b4dad5c70403d6ed29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statBarPrefab: {fileID: 554234548984071157, guid: 4ca38319aa9a8f04f876af09c51ae1e3,
-    type: 3}
+  playerStats: {fileID: 1245372301}
+  statBars:
+  - {fileID: 621950786}
+  - {fileID: 212897510}
+  - {fileID: 1593633116}
 --- !u!1 &1307380993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,6 +1562,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1134539954}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1593633116 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1898754126108408836, guid: 4ca38319aa9a8f04f876af09c51ae1e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1134539954}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6d2122766b99947b2ea328ff6694c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1640224435
 GameObject:
   m_ObjectHideFlags: 3
