@@ -12,7 +12,6 @@ public class PlayerStatsUI : MonoBehaviour
 
     [SerializeField] private PlayerStats playerStats;
 
-
     private void Start()
     {
         playerStats = FindObjectOfType<PlayerStats>();

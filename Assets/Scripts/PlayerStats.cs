@@ -14,9 +14,9 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float thirst = 50f;
     [SerializeField] private float boredom = 50f;
 
-    [SerializeField] private float maxHunger = 100;
-    [SerializeField] private float maxThirst = 100;
-    [SerializeField] private float maxBoredom = 100;
+    [SerializeField] private float maxHunger = 100f;
+    [SerializeField] private float maxThirst = 100f;
+    [SerializeField] private float maxBoredom = 100f;
 
     public event EventHandler<StatChangedEventArgs> OnStatChanged;
     public class StatChangedEventArgs : EventArgs
@@ -28,9 +28,9 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        maxHunger = 100;
-        maxThirst = 100;
-        maxBoredom = 100;
+        maxHunger = 100f;
+        maxThirst = 100f;
+        maxBoredom = 100f;
         statBarManager.Initialize(this);
         statBarManager.CreateStatBar("Hunger", hunger, maxHunger);
         statBarManager.CreateStatBar("Thirst", thirst, maxThirst);

@@ -13,10 +13,17 @@ public class PlayerStatsManager : MonoBehaviour
         playerStats.OnStatChanged += PlayerStats_OnStatChanged;
     }
 
+    private void PlayerStats_OnStatChanged(object sender, PlayerStats.StatChangedEventArgs e)
+    {
+        Debug.Log("OnStatChanged FIRED!!!!!!!!!!!!!!!!!!!!!!!");
+        UpdateStat(e.statName, e.currentValue, e.maxValue);
+    }
+
+
     public void CreateStatBar(string statName, float initialValue, float maxValue)
     {
         GameObject newStatBar = Instantiate(statBarPrefab, transform);
-        Debug.Log($"Instantiated stat bar for {statName}");
+        //Debug.Log($"Instantiated stat bar for {statName}");
 
         PlayerStatsUI statBarComponent = newStatBar.GetComponent<PlayerStatsUI>();
 
@@ -29,12 +36,6 @@ public class PlayerStatsManager : MonoBehaviour
         statBarComponent.SetStat(statName, initialValue, maxValue);
 
         statBars[statName] = statBarComponent;
-    }
-
-    private void PlayerStats_OnStatChanged(object sender, PlayerStats.StatChangedEventArgs e)
-    {
-        Debug.Log("OnStatChanged FIRED!!!!!!!!!!!!!!!!!!!!!!!");
-        UpdateStat(e.statName, e.currentValue, e.maxValue);
     }
 
     public void UpdateStat(string statName, float currentValue, float maxValue)

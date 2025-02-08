@@ -1046,6 +1046,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'BoredomBar '
       objectReference: {fileID: 0}
+    - target: {fileID: 1557780061612734710, guid: 4ca38319aa9a8f04f876af09c51ae1e3,
+        type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1898754126108408836, guid: 4ca38319aa9a8f04f876af09c51ae1e3,
         type: 3}
       propertyPath: playerStats
@@ -1070,6 +1075,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.g
       value: 0.9165293
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027029410520079985, guid: 4ca38319aa9a8f04f876af09c51ae1e3,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7538007354003621184, guid: 4ca38319aa9a8f04f876af09c51ae1e3,
         type: 3}
@@ -1215,9 +1225,11 @@ MonoBehaviour:
   hunger: 0
   thirst: 0
   boredom: 0
+  stat: 50
   maxHunger: 50
   maxThirst: 50
   maxBoredom: 50
+  maxStat: 100
 --- !u!4 &1245372302
 Transform:
   m_ObjectHideFlags: 0
