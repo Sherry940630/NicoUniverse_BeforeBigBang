@@ -53,6 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barImage: {fileID: 7027029410520079985}
   statNameText: {fileID: 3230527836099704717}
+  playerStats: {fileID: 1430174658244638720, guid: a1fa3ca9d5bb47c4e9fde8bb6cd3a74e,
+    type: 3}
 --- !u!1 &756823699033731004
 GameObject:
   m_ObjectHideFlags: 0
