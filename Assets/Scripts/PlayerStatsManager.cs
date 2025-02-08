@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerStatsManager : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStats;
-    [SerializeField] private List<PlayerStatsUI> statBars; // Assigned in Inspector
+    [SerializeField] private List<PlayerStatsUI> statBars;
 
     private void Start()
     {
@@ -16,7 +16,7 @@ public class PlayerStatsManager : MonoBehaviour
     {
         foreach (var statBar in statBars)
         {
-            string statName = statBar.name.Replace("Bar", "").Trim(); // Ensure proper names
+            string statName = statBar.name.Replace("Bar", "").Trim();
             statBar.Initialize(statName);
         }
     }

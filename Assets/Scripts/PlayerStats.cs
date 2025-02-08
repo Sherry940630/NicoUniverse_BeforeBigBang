@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public event Action<string, float, float> OnStatChanged; // Event for stat updates
+    public event Action<string, float, float> OnStatChanged;
 
-    private float hunger = 50f;
-    private float thirst = 50f;
-    private float boredom = 50f;
+    private float hunger = 0f;
+    private float thirst = 0f;
+    private float boredom = 0f;
 
     private const float MAX_HUNGER = 100f;
     private const float MAX_THIRST = 100f;
