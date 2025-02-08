@@ -14,6 +14,6 @@ public class PlayerStatsUI : MonoBehaviour
 
     public void UpdateStat(float currentValue, float maxValue)
     {
-        barImage.fillAmount = Mathf.Clamp01(currentValue / maxValue);
+        barImage.fillAmount = Mathf.Clamp01( (100-currentValue) / maxValue );
     }
 }
