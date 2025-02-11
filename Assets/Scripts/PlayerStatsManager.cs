@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerStatsManager : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStats;
-    [SerializeField] private List<PlayerStatsUI> statBars;
+    [SerializeField] private List<PlayerStatsUI> statBarList;
 
     private void Start()
     {
@@ -14,7 +14,7 @@ public class PlayerStatsManager : MonoBehaviour
 
     private void InitializeStatBars()
     {
-        foreach (var statBar in statBars)
+        foreach (var statBar in statBarList)
         {
             string statName = statBar.name.Replace("Bar", "").Trim();
             statBar.Initialize(statName);
@@ -23,11 +23,12 @@ public class PlayerStatsManager : MonoBehaviour
 
     private void UpdateStatBar(string statName, float currentValue, float maxValue)
     {
-        foreach (var statBar in statBars)
+        foreach (var statBar in statBarList)
         {
             if (statBar.name.StartsWith(statName))
             {
                 statBar.UpdateStat(currentValue, maxValue);
+                Debug.Log("BAR: " + statName + " = " + currentValue + " / " + maxValue);
                 break;
             }
         }
